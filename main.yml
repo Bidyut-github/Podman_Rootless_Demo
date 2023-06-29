@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  gather_facts: yes
+  vars:
+    username: rhuser
+    password: redhat
+  tasks:
+    - name: Create a new user
+      become: yes
+      ansible.builtin.user:
+        name: "{{ username }}"
+        password: "{{ password }}"
+        groups: wheel
+        append: yes
